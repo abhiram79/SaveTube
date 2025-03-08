@@ -401,29 +401,7 @@ fun DownloadPageImpl(
                                 }
                         }
                     ) {
-                        TooltipBox(
-                            state = rememberTooltipState(),
-                            positionProvider =
-                                TooltipDefaults.rememberTooltipPositionProvider(),
-                            tooltip = {
-                                PlainTooltip {
-                                    Text(text = stringResource(id = R.string.running_tasks))
-                                }
-                            },
-                        ) {
-                            IconButton(
-                                onClick = {
-                                    view.slightHapticFeedback()
-                                    onNavigateToTaskList()
-                                },
-                                modifier = Modifier,
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Outlined.Terminal,
-                                    contentDescription = stringResource(id = R.string.running_tasks),
-                                )
-                            }
-                        }
+                         
                     }
                     TooltipBox(
                         state = rememberTooltipState(),
