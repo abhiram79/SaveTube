@@ -84,18 +84,7 @@ fun NetworkPreferences(navigateToCookieProfilePage: () -> Unit = {}, onNavigateB
                 item {
                     var isRateLimitEnabled by remember { mutableStateOf(RATE_LIMIT.getBoolean()) }
 
-                    PreferenceSwitchWithDivider(
-                        title = stringResource(R.string.rate_limit),
-                        description = stringResource(R.string.rate_limit_desc),
-                        icon = Icons.Outlined.Speed,
-                        enabled = !isCustomCommandEnabled,
-                        isChecked = isRateLimitEnabled,
-                        onChecked = {
-                            isRateLimitEnabled = !isRateLimitEnabled
-                            updateValue(RATE_LIMIT, isRateLimitEnabled)
-                        },
-                        onClick = { showRateLimitDialog = true },
-                    )
+                
                 }
                 item {
                     var isDownloadWithCellularEnabled by remember {
@@ -115,64 +104,13 @@ fun NetworkPreferences(navigateToCookieProfilePage: () -> Unit = {}, onNavigateB
                     )
                 }
 
-                item { PreferenceSubtitle(text = stringResource(id = R.string.advanced_settings)) }
+              
 
-                item {
-                    PreferenceSwitch(
-                        title = stringResource(R.string.aria2),
-                        icon = Icons.Outlined.Bolt,
-                        description = stringResource(R.string.aria2_desc),
-                        isChecked = aria2c,
-                        onClick = {
-                            aria2c = !aria2c
-                            updateValue(ARIA2C, aria2c)
-                        },
-                    )
-                }
-                item {
-                    PreferenceSwitchWithDivider(
-                        title = stringResource(id = R.string.proxy),
-                        description = stringResource(id = R.string.proxy_desc),
-                        icon = Icons.Outlined.VpnKey,
-                        isChecked = proxy,
-                        onChecked = {
-                            proxy = !proxy
-                            PROXY.updateBoolean(proxy)
-                        },
-                        onClick = { showProxyDialog = true },
-                        enabled = !isCustomCommandEnabled,
-                    )
-                }
-                item {
-                    PreferenceItem(
-                        title = stringResource(id = R.string.concurrent_download),
-                        description = stringResource(R.string.concurrent_download_desc),
-                        icon = Icons.Outlined.OfflineBolt,
-                        enabled = !aria2c && !isCustomCommandEnabled,
-                    ) {
-                        showConcurrentDownloadDialog = true
-                    }
-                }
-                item {
-                    PreferenceSwitch(
-                        title = stringResource(R.string.force_ipv4),
-                        description = stringResource(id = R.string.force_ipv4_desc),
-                        icon = Icons.Outlined.SettingsEthernet,
-                        enabled = !isCustomCommandEnabled,
-                        isChecked = forceIpv4,
-                    ) {
-                        forceIpv4 = !forceIpv4
-                        FORCE_IPV4.updateBoolean(forceIpv4)
-                    }
-                }
-                item {
-                    PreferenceItem(
-                        title = stringResource(R.string.cookies),
-                        description = stringResource(R.string.cookies_desc),
-                        icon = Icons.Outlined.Cookie,
-                        onClick = { navigateToCookieProfilePage() },
-                    )
-                }
+               
+                
+               
+               
+               
             }
         },
     )

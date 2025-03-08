@@ -163,26 +163,8 @@ fun SettingsPage(onNavigateBack: () -> Unit, onNavigateTo: (String) -> Unit) {
                     onNavigateTo(Route.GENERAL_DOWNLOAD_PREFERENCES)
                 }
             }
-            item {
-                SettingItem(
-                    title = stringResource(id = R.string.download_directory),
-                    description = stringResource(id = R.string.download_directory_desc),
-                    icon = Icons.Rounded.Folder,
-                ) {
-                    onNavigateTo(Route.DOWNLOAD_DIRECTORY)
-                }
-            }
-            item {
-                SettingItem(
-                    title = stringResource(id = R.string.format),
-                    description = stringResource(id = R.string.format_settings_desc),
-                    icon =
-                        if (EXTRACT_AUDIO.getBoolean()) Icons.Rounded.AudioFile
-                        else Icons.Rounded.VideoFile,
-                ) {
-                    onNavigateTo(Route.DOWNLOAD_FORMAT)
-                }
-            }
+            
+            
             item {
                 SettingItem(
                     title = stringResource(id = R.string.network),
