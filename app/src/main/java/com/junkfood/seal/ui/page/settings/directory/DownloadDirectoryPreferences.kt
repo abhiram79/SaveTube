@@ -271,7 +271,7 @@ fun DownloadDirectoryPreferences(onNavigateBack: () -> Unit) {
                         }
                     }
                 }
-            item { PreferenceSubtitle(text = stringResource(R.string.general_settings)) }
+           
             if (!isCustomCommandEnabled) {
                 item {
                     PreferenceItem(
@@ -294,84 +294,14 @@ fun DownloadDirectoryPreferences(onNavigateBack: () -> Unit) {
                     }
                 }
             }
-            item {
-                PreferenceItem(
-                    title = stringResource(id = R.string.custom_command_directory),
-                    description =
-                        customCommandDirectory.ifEmpty {
-                            stringResource(id = R.string.set_directory_desc)
-                        },
-                    icon = Icons.Outlined.Folder,
-                ) {
-                    showCustomCommandDirectoryDialog = true
-                }
-            }
-            item {
-                PreferenceSwitchWithDivider(
-                    title = stringResource(id = R.string.sdcard_directory),
-                    description =
-                        sdcardUri.ifEmpty { stringResource(id = R.string.set_directory_desc) },
-                    isChecked = sdcardDownload,
-                    enabled = !isCustomCommandEnabled,
-                    isSwitchEnabled = !isCustomCommandEnabled,
-                    onChecked = {
-                        if (sdcardUri.isNotEmpty()) {
-                            sdcardDownload = !sdcardDownload
-                            PreferenceUtil.updateValue(SDCARD_DOWNLOAD, sdcardDownload)
-                        } else {
-                            openDirectoryChooser(Directory.SDCARD)
-                        }
-                    },
-                    icon = Icons.Outlined.SdCard,
-                    onClick = { openDirectoryChooser(Directory.SDCARD) },
-                )
-            }
-            item {
-                PreferenceItem(
-                    title = stringResource(id = R.string.subdirectory),
-                    description = stringResource(id = R.string.subdirectory_desc),
-                    icon = Icons.Outlined.SnippetFolder,
-                    enabled = !isCustomCommandEnabled && !sdcardDownload,
-                ) {
-                    showSubdirectoryDialog = true
-                }
-            }
-            item { PreferenceSubtitle(text = stringResource(R.string.privacy)) }
-            item {
-                PreferenceSwitch(
-                    title = stringResource(id = R.string.private_directory),
-                    description = stringResource(R.string.private_directory_desc),
-                    icon = Icons.Outlined.TabUnselected,
-                    enabled = !showDirectoryAlert && !sdcardDownload && !isCustomCommandEnabled,
-                    isChecked = isPrivateDirectoryEnabled,
-                    onClick = {
-                        isPrivateDirectoryEnabled = !isPrivateDirectoryEnabled
-                        PreferenceUtil.updateValue(PRIVATE_DIRECTORY, isPrivateDirectoryEnabled)
-                    },
-                )
-            }
-            item { PreferenceSubtitle(text = stringResource(R.string.advanced_settings)) }
-            item {
-                PreferenceItem(
-                    title = stringResource(R.string.output_template),
-                    description = stringResource(id = R.string.output_template_desc),
-                    icon = Icons.Outlined.FolderSpecial,
-                    enabled = !isCustomCommandEnabled && !sdcardDownload,
-                    onClick = { showOutputTemplateDialog = true },
-                )
-            }
-            item {
-                var restrictFilenames by RESTRICT_FILENAMES.booleanState
-                PreferenceSwitch(
-                    title = stringResource(id = R.string.restrict_filenames),
-                    icon = Icons.Outlined.Spellcheck,
-                    description = stringResource(id = R.string.restrict_filenames_desc),
-                    isChecked = restrictFilenames,
-                ) {
-                    restrictFilenames = !restrictFilenames
-                    RESTRICT_FILENAMES.updateBoolean(restrictFilenames)
-                }
-            }
+           
+           
+           
+           
+            
+           
+            
+            
             item {
                 PreferenceItem(
                     title = stringResource(R.string.clear_temp_files),
