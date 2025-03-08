@@ -44,8 +44,8 @@ android {
     buildFeatures { buildConfig = true }
 
     defaultConfig {
-        applicationId = "com.junkfood.seal"
-        minSdk = 24
+        applicationId = "com.abhiram.savetube"
+        minSdk = 21
         targetSdk = 35
         versionCode = 200_000_150
         check(versionCode == currentVersionCode)
