@@ -54,8 +54,8 @@ import com.junkfood.seal.util.AUTO_UPDATE
 import com.junkfood.seal.util.PreferenceUtil
 import com.junkfood.seal.util.ToastUtil
 
-private const val releaseURL = "https://github.com/JunkFood02/Seal/releases"
-private const val repoUrl = "https://github.com/JunkFood02/Seal"
+private const val releaseURL = "https://github.com/abhiram79/Seal/releases"
+private const val repoUrl = "https://github.com/abhiram79/SaveTube"
 const val weblate = "https://hosted.weblate.org/engage/seal/"
 const val YtdlpRepository = "https://github.com/yt-dlp/yt-dlp"
 private const val githubIssueUrl = "https://github.com/JunkFood02/Seal/issues"
@@ -145,49 +145,10 @@ fun AboutPage(
                         onNavigateToDonatePage()
                     }
                 }
-                item {
-                    PreferenceItem(
-                        title = stringResource(R.string.telegram_channel),
-                        description = telegramChannelUrl,
-                        icon = painterResource(id = R.drawable.icons8_telegram_app),
-                    ) {
-                        openUrl(telegramChannelUrl)
-                    }
-                }
-                item {
-                    PreferenceItem(
-                        title = stringResource(R.string.matrix_space),
-                        description = matrixSpaceUrl,
-                        icon = painterResource(id = R.drawable.icons8_matrix),
-                    ) {
-                        openUrl(matrixSpaceUrl)
-                    }
-                }
-                item {
-                    PreferenceItem(
-                        title = stringResource(id = R.string.credits),
-                        description = stringResource(id = R.string.credits_desc),
-                        icon = Icons.Outlined.AutoAwesome,
-                    ) {
-                        onNavigateToCreditsPage()
-                    }
-                }
-                item {
-                    PreferenceSwitchWithDivider(
-                        title = stringResource(R.string.auto_update),
-                        description = stringResource(R.string.check_for_updates_desc),
-                        icon =
-                            if (isAutoUpdateEnabled) Icons.Outlined.Update
-                            else Icons.Outlined.UpdateDisabled,
-                        isChecked = isAutoUpdateEnabled,
-                        isSwitchEnabled = !App.isFDroidBuild(),
-                        onClick = onNavigateToUpdatePage,
-                        onChecked = {
-                            isAutoUpdateEnabled = !isAutoUpdateEnabled
-                            PreferenceUtil.updateValue(AUTO_UPDATE, isAutoUpdateEnabled)
-                        },
-                    )
-                }
+               
+               
+                
+                
                 item {
                     PreferenceItem(
                         title = stringResource(R.string.version),
