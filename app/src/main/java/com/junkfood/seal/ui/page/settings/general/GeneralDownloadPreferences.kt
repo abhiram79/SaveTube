@@ -232,48 +232,9 @@ fun GeneralDownloadPreferences(onNavigateBack: () -> Unit, navigateToTemplate: (
                         },
                     )
                 }
-                item {
-                    PreferenceSwitch(
-                        title = stringResource(id = R.string.download_notification),
-                        description =
-                            stringResource(
-                                id =
-                                    if (isNotificationPermissionGranted)
-                                        R.string.download_notification_desc
-                                    else R.string.permission_denied
-                            ),
-                        icon =
-                            if (!isNotificationPermissionGranted) Icons.Outlined.NotificationsOff
-                            else if (!downloadNotification) Icons.Outlined.Notifications
-                            else Icons.Outlined.NotificationsActive,
-                        isChecked = downloadNotification && isNotificationPermissionGranted,
-                        onClick = {
-                            if (notificationPermission?.status is PermissionStatus.Denied) {
-                                showNotificationDialog = true
-                            } else if (isNotificationPermissionGranted) {
-                                if (downloadNotification) NotificationUtil.cancelAllNotifications()
-                                downloadNotification = !downloadNotification
-                                PreferenceUtil.updateValue(NOTIFICATION, downloadNotification)
-                            }
-                        },
-                    )
-                }
+               
 
-                item {
-                    var configureBeforeDownload by CONFIGURE.booleanState
-                    PreferenceSwitch(
-                        title = stringResource(id = R.string.settings_before_download),
-                        description = stringResource(id = R.string.settings_before_download_desc),
-                        icon =
-                            if (configureBeforeDownload) Icons.Outlined.DoneAll
-                            else Icons.Outlined.RemoveDone,
-                        isChecked = configureBeforeDownload,
-                        onClick = {
-                            configureBeforeDownload = !configureBeforeDownload
-                            PreferenceUtil.updateValue(CONFIGURE, configureBeforeDownload)
-                        },
-                    )
-                }
+                
 
                 item {
                     var thumbnailSwitch by remember { mutableStateOf(THUMBNAIL.getBoolean()) }
@@ -289,54 +250,12 @@ fun GeneralDownloadPreferences(onNavigateBack: () -> Unit, navigateToTemplate: (
                         },
                     )
                 }
-                item {
-                    PreferenceSwitch(
-                        title = stringResource(R.string.print_details),
-                        description = stringResource(R.string.print_details_desc),
-                        icon =
-                            if (displayErrorReport) Icons.Outlined.Print
-                            else Icons.Outlined.PrintDisabled,
-                        enabled = !isCustomCommandEnabled,
-                        onClick = {
-                            displayErrorReport = !displayErrorReport
-                            PreferenceUtil.updateValue(DEBUG, displayErrorReport)
-                        },
-                        isChecked = displayErrorReport,
-                    )
-                }
+               
 
-                item { PreferenceSubtitle(text = stringResource(id = R.string.privacy)) }
+                
 
-                item {
-                    PreferenceSwitch(
-                        title = stringResource(R.string.private_mode),
-                        description = stringResource(R.string.private_mode_desc),
-                        icon =
-                            if (isPrivateModeEnabled) Icons.Outlined.HistoryToggleOff
-                            else Icons.Outlined.History,
-                        isChecked = isPrivateModeEnabled,
-                        enabled = !isCustomCommandEnabled,
-                        onClick = {
-                            isPrivateModeEnabled = !isPrivateModeEnabled
-                            PreferenceUtil.updateValue(PRIVATE_MODE, isPrivateModeEnabled)
-                        },
-                    )
-                }
-                item {
-                    PreferenceSwitch(
-                        title = stringResource(R.string.disable_preview),
-                        description = stringResource(R.string.disable_preview_desc),
-                        icon =
-                            if (isPreviewDisabled) Icons.Outlined.VisibilityOff
-                            else Icons.Outlined.Visibility,
-                        isChecked = isPreviewDisabled,
-                        enabled = !isCustomCommandEnabled,
-                        onClick = {
-                            isPreviewDisabled = !isPreviewDisabled
-                            PreferenceUtil.updateValue(DISABLE_PREVIEW, isPreviewDisabled)
-                        },
-                    )
-                }
+               
+               
 
                 item { PreferenceSubtitle(text = stringResource(R.string.advanced_settings)) }
                 item {
@@ -373,20 +292,7 @@ fun GeneralDownloadPreferences(onNavigateBack: () -> Unit, navigateToTemplate: (
                     )
                 }
 
-                item {
-                    PreferenceSwitchWithDivider(
-                        title = stringResource(R.string.sponsorblock),
-                        description = stringResource(R.string.sponsorblock_desc),
-                        icon = Icons.Outlined.MoneyOff,
-                        enabled = !isCustomCommandEnabled,
-                        isChecked = isSponsorBlockEnabled,
-                        onChecked = {
-                            isSponsorBlockEnabled = !isSponsorBlockEnabled
-                            PreferenceUtil.updateValue(SPONSORBLOCK, isSponsorBlockEnabled)
-                        },
-                        onClick = { showSponsorBlockDialog = true },
-                    )
-                }
+               
 
                 if (downloadSubtitle)
                     item {
