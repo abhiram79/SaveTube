@@ -50,6 +50,7 @@ android {
         versionCode = 1
         versionName = "1.0"
   //    check(versionCode == currentVersionCode)
+  
 
  //     versionName = baseVersionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
