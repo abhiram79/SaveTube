@@ -571,3 +571,4 @@ object Downloader {
 
     fun String.toNotificationId(): Int = this.hashCode()
 }
+
